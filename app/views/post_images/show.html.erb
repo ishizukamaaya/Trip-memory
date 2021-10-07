@@ -7,6 +7,8 @@
           <div class="card-body">
             <p>タイトル：<%= @post_image.title %></p>
             <p>説明：<%= @post_image.introduction %></p>
+            <!--評価表示-->
+            <p class="post_image-evaluation" data-score="<%= @post_image.evaluation %>"></p>
             <p>ユーザーネーム：<%= @post_image.user.name %></p>
             <p>投稿日時：<%= @post_image.created_at.strftime('%Y/%m/%d') %></p>
             <!-- 投稿者=ログインしているユーザーだったら-->
@@ -15,7 +17,16 @@
               <%= link_to "削除",post_image_path(@post_image), method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-danger" %>
             <% end %>
         </div>
-
     </div>
   </div>
 </div>
+<!--評価-->
+<script>
+  $('.post_image-evaluation').raty({
+    readOnly: true,
+    score: function() {
+      return $(this).attr('data-score');
+    },
+    path: '/assets/'
+  });
+</script>

@@ -12,7 +12,21 @@
     <%= f.label :説明,class: "col-4" %>
     <%= f.text_area :introduction, size:"35x6", placeholder:'ここは説明文を記述します', class:"form-control-static" %>
   </div>
+  <div id="evaluate_stars">
+    <%= f.label :評価,class: "col-4" %>
+  </div>
   <div class="actions mt-4">
     <%= f.submit class: "btn btn-success w-25" %>
   </div>
 <% end %>
+
+<!--評価-->
+<script>
+  $('#evaluate_stars').raty({
+    starOn: "<%= asset_path('star-on.png') %>",
+    starOff: "<%= asset_path('star-off.png') %>",
+    starHalf: "<%= asset_path('star-half.png') %>",
+    scoreName: 'post_image[evaluation]',
+    half: true,
+  });
+</script>
