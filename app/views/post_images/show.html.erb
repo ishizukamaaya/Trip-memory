@@ -2,7 +2,20 @@
   <div class="row">
     <div class="mx-auto col-sm-10 mt-4 text-center">
       <h2 class="text-main">投稿詳細</h2>
-      <%= attachment_image_tag @post_image, :image,size:'500x300' %>
+        <div class="card mx-auto" style="width:30rem">
+          <%= attachment_image_tag @post_image, :image %>
+          <div class="card-body">
+            <p>タイトル：<%= @post_image.title %></p>
+            <p>説明：<%= @post_image.introduction %></p>
+            <p>ユーザーネーム：<%= @post_image.user.name %></p>
+            <p>投稿日時：<%= @post_image.created_at.strftime('%Y/%m/%d') %></p>
+            <!-- 投稿者=ログインしているユーザーだったら-->
+            <% if @post_image.user == current_user %>
+              <%= link_to "編集",edit_post_image_path(@post_image), class: "btn btn-success" %>
+              <%= link_to "削除",post_image_path(@post_image), method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-danger" %>
+            <% end %>
+        </div>
+
     </div>
   </div>
 </div>
