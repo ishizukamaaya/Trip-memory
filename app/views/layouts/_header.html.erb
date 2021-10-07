@@ -1,5 +1,5 @@
 <header>
-  <nav class="navbar navbar-expand-lg bg-info">
+  <nav class="navbar navbar-expand-lg navbar-dark">
     <div class="container">
       <a class="navbar-brand" href="/"><span>Trip memory</span></a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
@@ -10,16 +10,16 @@
 
         <% if user_signed_in? %>
         <!--ログインしている時-->
-          <li><%= link_to "マイページ",user_path(current_user) %></li>
-          <li><%=link_to "投稿一覧",post_images_path %></li>
-          <li><%= link_to "ログアウト", destroy_user_session_path, method: :delete %></li>
+          <li><%= link_to "マイページ",user_path(current_user),class: 'nav-link text-light' %></li>
+          <li><%=link_to "投稿一覧",post_images_path,class: 'nav-link text-light' %></li>
+          <li><%= link_to "ログアウト", destroy_user_session_path, method: :delete,class: 'nav-link text-light' %></li>
 
         <% else %>
         <!--ログインしていない時-->
-          <li><%= link_to "Home", root_path %></li>
-          <li><%= link_to "About", home_about_path %></li>
-          <li><%= link_to "Sign up", new_user_registration_path %></li>
-          <li><%= link_to "Sign in", new_user_session_path %></li>
+          <li><%= link_to "Home", root_path,class: 'nav-link text-light' %></li>
+          <li><%= link_to "About", home_about_path,class: 'nav-link text-light' %></li>
+          <li><%= link_to "Sign up", new_user_registration_path,class: 'nav-link text-light' %></li>
+          <li><%= link_to "Sign in", new_user_session_path,class: 'nav-link text-light' %></li>
         <% end %>
         </ul>
       </div>
