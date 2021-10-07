@@ -1,2 +1,8 @@
-<h1>PostImages#show</h1>
-<p>Find me in app/views/post_images/show.html.erb</p>
+<div class="container" style="margin-bottom:200px;">
+  <div class="row">
+    <div class="mx-auto col-sm-10 mt-4 text-center">
+      <h2 class="text-main">投稿詳細</h2>
+      <%= attachment_image_tag @post_image, :image,size:'500x300' %>
+    </div>
+  </div>
+</div>
