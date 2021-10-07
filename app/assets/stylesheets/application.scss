@@ -30,20 +30,25 @@
  /*ここまで*/
 
  /*topのボタンの位置*/
-.inner {
-  display: flex;
-  justify-content: space-evenly;
-}
+ .inner {
+   display: flex;
+   justify-content: space-evenly;
+ }
 
-.text-main{
-  border-top:solid 1px #000000;
-  border-bottom:solid 1px #000000;
-  padding-top:15px;
-  padding-bottom:15px;
-  width:200px;
-  text-align:center;
-  margin:0 auto;
-  margin-top:25px;
-  margin-bottom:25px;
-  font-size:20px;
-}
+ .text-main{
+   border-top:solid 1px #000000;
+   border-bottom:solid 1px #000000;
+   padding-top:15px;
+   padding-bottom:15px;
+   width:200px;
+   text-align:center;
+   margin:0 auto;
+   margin-top:25px;
+   margin-bottom:25px;
+   font-size:20px;
+ }
+  /*post_image index*/
+ .card-block{
+  display: flex;
+  flex-wrap: wrap;
+ }
