@@ -16,5 +16,7 @@ class User < ApplicationRecord
   has_many :post_image_tags, dependent: :destroy
   has_many :tags, through: :post_image_tags
 
+  attachment :profile_image
+
 
 end
