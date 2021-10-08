@@ -2,7 +2,7 @@
   <div class="row">
     <div class="mx-auto col-sm-10 mt-4 text-center">
       <h2 class="text-main">投稿一覧</h2>
-      <!--cardhひとかたまり-->
+      <!--cardひとかたまり-->
       <div class="card-block">
         <% @post_images.each do |post_image| %>
           <!--投稿画像　詳細へのリンク-->
@@ -24,6 +24,7 @@
           </div>
         <% end %>
       </div>
+      <%= paginate @post_images %>
     </div>
   </div>
 </div>
