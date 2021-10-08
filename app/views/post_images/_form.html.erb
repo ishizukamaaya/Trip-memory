@@ -1,25 +1,35 @@
 <%= form_with model: post_image,local:true do |f| %>
-
-  <div class="field mt-4">
-    <%= f.label :画像,class: "col-4" %>
-    <%= f.attachment_field :image,class:"form-control-static" %>
-  </div>
-  <div class="field mt-4">
-    <%= f.label :タイトル,class: "col-4" %>
-    <%= f.text_field :title, class:"form-control-static col-4" %>
-  </div>
-  <div class="field mt-4">
-    <%= f.label :説明,class: "col-4" %>
-    <%= f.text_area :introduction, size:"35x6", placeholder:'ここは説明文を記述します', class:"form-control-static" %>
-  </div>
-  <div id="evaluate_stars">
-    <%= f.label :評価,class: "col-4" %>
-  </div>
-  <div class="actions mt-4">
-    <%= f.submit class: "btn btn-success w-25" %>
-  </div>
+  <div class="row">
+    <div class='col-sm-2 offset-md-1 mt-3'>
+      <div class="field">
+        <p>画像</p>
+      </div><br>
+      <div class="field">
+        <p>タイトル</p>
+      </div><br><br>
+      <div class="field">
+        <p>説明</p>
+      </div><br><br><br><br><br><br>
+      <div class="evaluate_stars">
+        <p>評価</p>
+      </div><br>
+    </div>
+      <div class = "col-sm-7 offset-md-1 mt-3">
+        <div class = "field">
+          <p><%= f.attachment_field :image,class:"form-control-static" %></p>
+        </div><br>
+        <div class = "field">
+          <p><%= f.text_field :title, class:"form-control-static col-4" %></p>
+        </div><br>
+        <div class = "field">
+          <p><%= f.text_area :introduction, size:"35x6", placeholder:'ここは説明文を記述します', class:"form-control-static" %></p>
+        </div><br>
+        <div id="evaluate_stars"></div>
+        <div class="actions mt-4">
+          <%= f.submit "送信", class: "btn btn-success w-25" %>
+        </div>
+      </div>
 <% end %>
-
 <!--評価-->
 <script>
   $('#evaluate_stars').raty({

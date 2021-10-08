@@ -1,12 +1,17 @@
-<div class="container">
+<div class="container" style="margin-bottom:200px;">
   <div class="row">
     <div class="mx-auto col-sm-10 mt-4 text-center">
       <h2>Welcome to<br>
       Trip memory<i class="fas fa-camera"></i></h2>
-      <div class="img mt-4">
-        <%= image_tag "img/photo.jpeg",size:'600x400' %>
+      <div id="box">
+        <div id="images">
+          <div class="image1"></div>
+          <div class="image2"></div>
+          <div class="image3"></div>
+          <div class="image4"></div>
+        </div>
       </div>
-      <p class="mt-3">ログイン又は新規登録をお願いします</p>
+      <h5 class="mt-3">ログイン又は新規登録をお願いします</h5>
       <div class="content">
   　　  　<div class="inner">
           <%= link_to "ログイン", new_user_session_path, class: "btn btn-info w-25" %>
