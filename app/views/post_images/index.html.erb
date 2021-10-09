@@ -1,11 +1,13 @@
 <div class="container" style="margin-bottom:200px;">
   <div class="row">
     <div class="mx-auto col-sm-10 mt-4 text-center">
+
+      <h2 class="text-main">ランキング</h2>
+        <%= render 'ranks', ranks: @ranks %>
+
       <h2 class="text-main">投稿一覧</h2>
-
-      <%= render 'index', post_images: @post_images %>
-
-      <%= paginate @post_images %>
+        <%= render 'index', post_images: @post_images %>
+        <%= paginate @post_images %>
     </div>
   </div>
 </div>
