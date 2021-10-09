@@ -1,13 +1,13 @@
 <!--いいねにログインユーザーが含まれているか-->
 <% if post_image.favorited_by?(current_user) %>
   <p>
-    <%= link_to post_image_favorites_path(post_image), method: :delete do %>
+    <%= link_to post_image_favorites_path(post_image), method: :delete, remote: true do %>
       <i class="fas fa-heart unlike-btn"></i>：<%= post_image.favorites.count %>
     <% end %>
   </p>
   <% else %>
   <p>
-    <%= link_to post_image_favorites_path(post_image), method: :post do %>
+    <%= link_to post_image_favorites_path(post_image), method: :post, remote: true do %>
       <i class="far fa-heart like-btn"></i>：<%= post_image.favorites.count %>
     <% end %>
   </p>
