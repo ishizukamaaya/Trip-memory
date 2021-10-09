@@ -13,7 +13,7 @@ class PostImagesController < ApplicationController
 
   def index
     @post_images = PostImage.page(params[:page]).reverse_order
-    @ranks = PostImage.joins(:favorites).where(favorites: { created_at:Time.current.all_week}).group(:id).order("count(*) desc")#今週、月曜から日曜のいいねランキング
+    @ranks = PostImage.find(Favorite.group(:post_image_id).where(created_at: Time.current.all_week).order('count(post_image_id) desc').limit(3).pluck(:post_image_id)) #今週、月曜から日曜日のいいねランキング
   end
 
   def show
