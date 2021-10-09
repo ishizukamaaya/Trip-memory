@@ -1,2 +1,18 @@
-<h1>Users#unsubscribe</h1>
-<p>Find me in app/views/users/unsubscribe.html.erb</p>
+<div class="container">
+  <div class="row">
+    <div class="mx-auto col-sm-10 mt-3 text-center">
+      <h2 class="text-main">退会</h2>
+      　<h3>本当に退会しますか？</h3>
+      　　<h4><i class="far fa-bell"></i>注意</h4>
+      　　  <p>退会すると今まで投稿した写真やお客様の情報が消えてしまいます。<br>
+      　　復元することはできません。<br>
+      　　退会する・しないボタンを選択してください。</p>
+
+      　　<%= link_to "退会しない", user_path(current_user), class: "btn btn-success w-25 m-3" %>
+      　　<%= link_to "退会する", user_path(current_user), method: :delete, class: "btn btn-danger w-25" %>
+
+
+
+    </div>
+  </div>
+</div>
