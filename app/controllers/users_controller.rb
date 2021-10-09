@@ -2,8 +2,8 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    @post_images = @user.post_images
-    @post_images = PostImage.page(params[:page]).reverse_order
+    @post_images = @user.post_images.page(params[:page]).reverse_order
+    # @post_images = PostImage.page(params[:page]).reverse_order
   end
 
   def edit
@@ -23,7 +23,6 @@ class UsersController < ApplicationController
   end
 
   def unsubscribe
-    # @user = User.find(params[:id])
   end
 
   private

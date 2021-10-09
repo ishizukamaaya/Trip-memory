@@ -8,7 +8,7 @@ class User < ApplicationRecord
   has_many :favorites,dependent: :destroy
   has_many :comments,dependent: :destroy
 
-  has_many :reverse_of_relationships, class_name: "Relationship", foreign_key: "folloewd_id", dependent: :destroy #フォローされてる人を取得
+  has_many :reverse_of_relationships, class_name: "Relationship", foreign_key: "followed_id", dependent: :destroy #フォローされてる人を取得
   has_many :followers, through: :reverse_of_relationships, source: :follower #自分をフォローしてる人
   has_many :relationships, class_name: "Relationship", foreign_key: "follower_id", dependent: :destroy #フォローしてる人を取得
   has_many :followings, through: :relationships, source: :folloewd #自分がフォローしてる人
