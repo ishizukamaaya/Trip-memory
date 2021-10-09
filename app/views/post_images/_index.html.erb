@@ -23,6 +23,7 @@
             <!--説明-->
             <p class="card-text">説明：<%= post_image.introduction %></p>
             <p class="card-create">投稿日：<%= post_image.created_at.strftime('%Y/%m/%d') %></p>
+            <p><%= link_to "#{post_image.comments.count} コメント", post_image_path(post_image) %></p>
           </div>
         </div>
       </div>
