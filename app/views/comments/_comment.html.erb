@@ -1,0 +1,11 @@
+<!--コメント表示-->
+<% post_image.comments.each do |comment| %>
+  <p>
+    <%= comment.user.name %>:
+    <%= comment.comment %>
+    <!--コメントした人がログインユーザーだったら-->
+    <% if comment.user == current_user %>
+      <%= link_to "削除", post_image_comment_path(comment.post_image, comment), method: :delete, remote: true, class: "btn btn-danger btn-sm" %>
+    <% end %>
+  </p>
+  <% end %>

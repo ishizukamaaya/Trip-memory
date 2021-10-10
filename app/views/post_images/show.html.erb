@@ -1,7 +1,6 @@
 <div class="container" style="margin-bottom:200px;">
   <div class="row">
     <div class="mx-auto col-sm-10 mt-4 text-center">
-
       <h2 class="text-main">投稿詳細</h2>
         <!--cardひとかたまり-->
         <div class="card mx-auto" style="width:40rem">
@@ -23,38 +22,34 @@
                 <!--評価表示-->
                 <p class="post_image-evaluation" data-score="<%= @post_image.evaluation %>"></p>
                 <p class="card-create">投稿日：<%= @post_image.created_at.strftime('%Y/%m/%d') %></p>
-                
-                <%= render "favorites/favorite", post_image: @post_image %>
+                <!--いいねテンプレート-->
+                <div id="favorite_buttons_<%= @post_image.id %>">
+                  <%= render "favorites/favorite-btn", post_image: @post_image %>
+                </div>
                 <!-- 投稿者=ログインしているユーザーだったら-->
                 <% if @post_image.user == current_user %>
-                  <%= link_to "編集",edit_post_image_path(@post_image), class: "btn btn-success" %>
+                  <%= link_to "編集",edit_post_image_path(@post_image), class: "btn btn-success m-4" %>
                   <%= link_to "削除",post_image_path(@post_image), method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-danger" %>
                 <% end %>
               </div>
             </div>
-
             <div class="row">
               <div class="col-4">
                 <!--コメント欄-->
-                <%= form_with(model:[@post_image,@comment],local: true) do |f| %>
+                <%= form_with model:[@post_image,@comment] do |f| %>
                   <%= f.text_area :comment, rows:'3',placeholder: "コメントはこちらへ" %>
                   <p><%= f.submit "送信", class: "btn btn-success" %></p>
                 <% end %>
               </div>
-
               <div class="col-6">
                 <!--コメント件数カウント-->
-                <p class="card-comment">コメント件数:<%= @post_image.comments.count %></p>
-                <!--コメント表示-->
-                <% @post_image.comments.each do |comment| %>
-                  <%= comment.user.name %>:
-                  <%= comment.comment %>
-
-                  <!--コメントした人がログインユーザーだったら-->
-                  <% if comment.user == current_user %>
-                    <%= link_to "削除", post_image_comment_path(comment.post_image, comment), method: :delete, class: "btn btn-danger" %>
-                  <% end %>
-                <% end %>
+                <div id="post_comment_<%= @post_image.id %>">
+                  <p class="comments-count">コメント数:<%= @post_image.comments.count %></p>
+                </div>
+                <!--コメント表示テンプレート-->
+                <div class="comments">
+                  <%= render "comments/comment", post_image: @post_image %>
+                </div>
               </div>
             </div>
           </div>

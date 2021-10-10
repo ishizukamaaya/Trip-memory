@@ -2,15 +2,16 @@ class CommentsController < ApplicationController
 
   def create
     @post_image = PostImage.find(params[:post_image_id])
-    comment = current_user.comments.new(comment_params)
-    comment.post_image_id = @post_image.id
-    comment.save
-    redirect_to post_image_path(@post_image)
+    @comment = Comment.new(comment_params)
+    @comment.post_image_id = @post_image.id
+    @comment.user_id = current_user.id
+    @comment.save
   end
 
   def destroy
-    Comment.find_by(id:params[:id]).destroy
-    redirect_to post_image_path(params[:post_image_id])
+    @post_image = PostImage.find(params[:post_image_id])
+    @comment = @post_image.comments.find(params[:id])
+    @comment.destroy
   end
 
   private
