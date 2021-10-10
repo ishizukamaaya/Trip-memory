@@ -1,4 +1,10 @@
 <div class="container" style="margin-bottom:200px;">
+
+<% @tag_list.each do |list|%>
+  <%= link_to list.name ,search_tag_path(tag_id: list.id) %>
+  <%="(#{list.post_images.count})" %>
+<% end %>
+
   <div class="row">
     <div class="mx-auto col-sm-10 mt-4 text-center">
 

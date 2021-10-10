@@ -16,6 +16,7 @@ Rails.application.routes.draw do
     resource :favorites, only:[:create,:destroy]
   end
 
-  resources :tag,only:[:index]
+
+  get "search_tag"=>"post_images#search_tag"
 
 end

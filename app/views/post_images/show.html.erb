@@ -21,6 +21,10 @@
                 <p class="card-text">説明：<%= @post_image.introduction %></p>
                 <!--評価表示-->
                 <p class="post_image-evaluation" data-score="<%= @post_image.evaluation %>"></p>
+                <!--タグ表示-->
+                <% @post_image.tags.each do |tag| %>
+                  #<%= link_to tag.name, search_tag_path(tag_id: tag.id)%>
+                <% end %>
                 <p class="card-create">投稿日：<%= @post_image.created_at.strftime('%Y/%m/%d') %></p>
                 <!--いいねテンプレート-->
                 <div id="favorite_buttons_<%= @post_image.id %>">
