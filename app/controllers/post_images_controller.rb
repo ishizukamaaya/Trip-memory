@@ -44,7 +44,18 @@ class PostImagesController < ApplicationController
 
   def destroy
     @post_image = PostImage.find(params[:id])
+    @post_image_tag_all = @post_image.post_image_tags.all
+    tag_ids = Array.new
+    @post_image_tag_all.each do |tag|
+      tag_ids.push(tag.tag_id)
+    end
     @post_image.destroy
+    tag_ids.each do |tag_id|
+      #tagが０だったらtagをdestroy
+      if PostImageTag.where(tag_id: tag_id).count == 0
+        Tag.find(tag_id).destroy
+      end
+    end
     redirect_to post_images_path
   end
 
