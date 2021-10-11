@@ -9,7 +9,7 @@ class PostImage < ApplicationRecord
   has_many :tags,through: :post_image_tags
 
   #バリデーション
-  validates :image_id, presence: true
+  validates :image, presence: true
   validates :title, presence: true,length: {maximum: 10}
   validates :introduction, presence: true,length: {maximum: 50}
   validates :evaluation, presence: true
@@ -20,23 +20,17 @@ class PostImage < ApplicationRecord
   end
 
   def save_tags(tag_list)
-
     #全て消す
     post_image_tags.destroy_all
     #まだ未登録のtagを追加
     tag_list.each do |tag|
-
-       find_tag = Tag.find_by(name: tag.downcase)
-       # dbに同じtagがあるか.なければ追加 かつpost_image_tagも作成
-
+      find_tag = Tag.find_by(name: tag.downcase)
+      # dbに同じtagがあるか.なければ追加 かつpost_image_tagも作成
       unless find_tag
-
         tags.create!(name: tag)
-
       else
         post_image_tags.create!(tag_id: find_tag.id)
       end
-
     end
   end
 end

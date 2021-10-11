@@ -43,8 +43,18 @@ class PostImagesController < ApplicationController
   def update
     @post_image = PostImage.find(params[:id])
     tag_list = params[:post_image][:name].split(',')
+    @post_image_tag_all = @post_image.post_image_tags.all #全てのtag取得
+    tag_ids = Array.new
+    @post_image_tag_all.each do |tag| #tagを取り出す
+      tag_ids.push(tag.tag_id)
+    end
     if @post_image.update(post_image_params)
       @post_image.save_tags(tag_list)
+      tag_ids.each do |tag_id|
+        if PostImageTag.where(tag_id: tag_id).count == 0 #tagが０だったらtagをdestroy
+          Tag.find(tag_id).destroy
+        end
+    end
       redirect_to post_image_path(@post_image)
     else
       render :edit
@@ -60,8 +70,7 @@ class PostImagesController < ApplicationController
     end
     @post_image.destroy
     tag_ids.each do |tag_id|
-      #tagが０だったらtagをdestroy
-      if PostImageTag.where(tag_id: tag_id).count == 0
+      if PostImageTag.where(tag_id: tag_id).count == 0 #tagが０だったらtagをdestroy
         Tag.find(tag_id).destroy
       end
     end
