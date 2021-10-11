@@ -8,14 +8,15 @@
   </tr>
   <tr>
     <th>紹介文</th>
-    <th><%= user.introduction %></th>
+
+    <th><%=safe_join(user.introduction.split("\n"),tag(:br))%></th>
   </tr>
   <tr>
-    <th>follows</th>
+    <th>フォロー中</th>
     <td><%= link_to user.followings.count,user_followings_path(user) %></td>
   </tr>
   <tr>
-    <th>followers</th>
+    <th>フォローワー</th>
     <td><%=link_to user.followers.count, user_followers_path(user) %></td>
   </tr>
 </table>

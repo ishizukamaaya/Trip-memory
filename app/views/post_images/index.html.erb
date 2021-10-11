@@ -14,7 +14,7 @@
         <%= render 'ranks', ranks: @ranks %>
 
       <h2 class="text-main">投稿一覧</h2>
-        <%= render 'index', post_images: @post_images %>
+        <%= render 'index', post_images: @post_images, user: @user %>
         <%= paginate @post_images %>
     </div>
   </div>

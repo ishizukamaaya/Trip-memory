@@ -1,6 +1,6 @@
 <div class='container px-5 px-sm-0 mt-4' style="margin-bottom:200px;">
   <div class='row'>
-    <div class='col-md-3'>
+    <div class='col-md-4'>
       <h2 class="text-main">プロフィール</h2>
 
       <%= render 'profile', user: @user %>
@@ -12,7 +12,7 @@
       <% end %>
 
     </div>
-    <div class='col-md-7 offset-md-2 text-center'>
+    <div class='col-md-7 offset-md-1 text-center'>
       <h2 class="text-main">マイページ</h2>
       <%= render 'post_images/index', post_images: @post_images %>
       <%= paginate @post_images %>

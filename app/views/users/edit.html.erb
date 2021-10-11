@@ -12,7 +12,7 @@
             </div><br>
             <div class = "field">
               <p>名前</p>
-            </div><br>
+            </div><br><br>
             <div class = "field">
               <p>紹介文</p>
             </div><br>
@@ -22,10 +22,10 @@
               <p><%= f.attachment_field :profile_image, placeholder: "profile_image" %></p>
             </div><br>
             <div class = "field">
-              <p><%= f.text_field :name, class: "form-control-static col-4" %></p>
+              <p><%= f.text_field :name, class: "form-control col-8" %></p>
             </div><br>
             <div class = "field">
-              <p><%= f.text_area :introduction,size:"35x6",　class:"form-control-static" %></p>
+              <p><%= f.text_area :introduction, size:"35x6", class:"form-control col-8" %></p>
             </div><br>
             <div class="actions">
               <%= f.submit "編集する", class: 'btn btn-success m-4' %>

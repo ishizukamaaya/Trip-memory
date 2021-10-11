@@ -16,24 +16,29 @@
           <%= attachment_image_tag @post_image, :image %>
           <div class="card-body">
             <div class="row">
-              <!--投稿者のプロフィール写真-->
-          　　<div class="col-2">
-          　　    <p><%= attachment_image_tag @post_image.user, :profile_image, :fill, 80, 80, fallback: "img/no_image.jpg", class:"mt-3 rounded-circle"; %></p>
-              <!--名前を押すとマイページへ-->
+          　　<div class="col-3">
+              <!--名前と写真を押すとマイページへ-->
                 <%= link_to user_path(@user), class: "text-dark" do %>
+                  <p><%= attachment_image_tag @post_image.user, :profile_image, :fill, 80, 80, fallback: "img/no_image.jpg", class:"mt-3 rounded-circle"; %></p>
                   <p class="card-user"><%= @post_image.user.name %></p>
                 <% end %>
               </div>
-              <div class="col-9">
-                <p class="card-title">タイトル：<%= @post_image.title %></p>
-                <p class="card-text">説明：<%= @post_image.introduction %></p>
+              <div class="col-7">
+                <!--タイトル-->
+                <p class="card-title"><i class="fas fa-camera"></i>：<%= @post_image.title %></p>
+                <!--説明文-->
+                <p class="card-text"><i class="far fa-comment"></i>：<%=safe_join(@post_image.introduction.split("\n"),tag(:br))%></p>
+                <!--タグ表示-->
+                <p>
+                  <% @post_image.tags.each do |tag| %>
+                    #<%= link_to tag.name, search_tag_path(tag_id: tag.id)%>
+                  <% end %>
+                </p>
                 <!--評価表示-->
                 <p class="post_image-evaluation" data-score="<%= @post_image.evaluation %>"></p>
-                <!--タグ表示-->
-                <% @post_image.tags.each do |tag| %>
-                  #<%= link_to tag.name, search_tag_path(tag_id: tag.id)%>
-                <% end %>
-                <p class="card-create">投稿日：<%= @post_image.created_at.strftime('%Y/%m/%d') %></p>
+
+                <!--投稿日-->
+                <p class="card-create"><i class="fas fa-calendar-minus"></i>：<%= @post_image.created_at.strftime('%Y/%m/%d') %></p>
                 <!--いいねテンプレート-->
                 <div id="favorite_buttons_<%= @post_image.id %>">
                   <%= render "favorites/favorite-btn", post_image: @post_image %>

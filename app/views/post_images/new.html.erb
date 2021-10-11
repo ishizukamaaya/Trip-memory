@@ -28,14 +28,14 @@
                 <p><%= f.attachment_field :image,class:"form-control-static" %></p>
               </div><br>
               <div class = "field">
-                <p><%= f.text_field :title, placeholder:'タイトル(10字以内)', class:"form-control" %></p>
+                <p><%= f.text_field :title, placeholder:'タイトル(10字以内)', class:"form-control col-8" %></p>
               </div><br>
               <div class = "field">
-                <p><%= f.text_area :introduction, size:"35x4", placeholder:'説明文(20字以内)', class:"form-control" %></p>
+                <p><%= f.text_area :introduction, size:"35x4", placeholder:'説明文(20字以内)', class:"form-control col-8" %></p>
               </div><br>
               <div id="evaluate_stars"></div><br><br>
               <div class = "field">
-                <p><%= f.text_field :name,value: @tag_list, placeholder:'海外,旅行,海 (複数入力は , で区切ってください)',class:"form-control" %></p>
+                <p><%= f.text_field :name,value: @tag_list, placeholder:'海外,旅行,南国(,で区切る)',class:"form-control col-8" %></p>
               </div><br>
               <div class="actions">
                 <%= f.submit "投稿", class: "btn btn-success w-25" %>
