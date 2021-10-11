@@ -27,6 +27,7 @@ class PostImagesController < ApplicationController
     @user = @post_image.user
     @comment = Comment.new
     @post_image_tags = @post_image.tags
+    @tag_list = Tag.all
   end
 
   def edit
@@ -62,7 +63,7 @@ class PostImagesController < ApplicationController
   def search_tag
     @tag_list = Tag.all
     @tag = Tag.find(params[:tag_id])
-    @post_images = @tag.post_images
+    @post_images = @tag.post_images.page(params[:page]).reverse_order
   end
 
   private

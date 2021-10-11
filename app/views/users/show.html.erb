@@ -5,6 +5,12 @@
 
       <%= render 'profile', user: @user %>
 
+      <h2 class="text-tag">タグ一覧</h2>
+      <% @tag_list.each do |list|%>
+        <p><%= link_to list.name ,search_tag_path(tag_id: list.id) %>
+        <%="(#{list.post_images.count})" %></p>
+      <% end %>
+
     </div>
     <div class='col-md-7 offset-md-2 text-center'>
       <h2 class="text-main">マイページ</h2>
