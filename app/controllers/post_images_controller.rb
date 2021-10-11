@@ -33,14 +33,22 @@ class PostImagesController < ApplicationController
   def edit
     @post_image = PostImage.find(params[:id])
     @tag_list = @post_image.tags.pluck(:name).join(',')
+    if @post_image.user == current_user
+      render :edit
+    else
+      redirect_to post_images_path
+    end
   end
 
   def update
     @post_image = PostImage.find(params[:id])
     tag_list = params[:post_image][:name].split(',')
-    @post_image.update(post_image_params)
-    @post_image.save_tags(tag_list)
-    redirect_to post_image_path(@post_image)
+    if @post_image.update(post_image_params)
+      @post_image.save_tags(tag_list)
+      redirect_to post_image_path(@post_image)
+    else
+      render :edit
+    end
   end
 
   def destroy

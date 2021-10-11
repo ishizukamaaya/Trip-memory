@@ -18,5 +18,8 @@ class User < ApplicationRecord
 
   attachment :profile_image
 
+  #バリデーション
+  validates :name, length: {maximum: 10, minimum: 2}, uniqueness: true
+  validates :introduction, length: {maximum: 20 }
 
 end

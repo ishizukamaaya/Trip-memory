@@ -8,6 +8,13 @@ class PostImage < ApplicationRecord
   has_many :post_image_tags,dependent: :destroy
   has_many :tags,through: :post_image_tags
 
+  #バリデーション
+  validates :image_id, presence: true
+  validates :title, presence: true,length: {maximum: 10}
+  validates :introduction, presence: true,length: {maximum: 50}
+  validates :evaluation, presence: true
+
+  #tag関連
   def favorited_by?(user)
     favorites.where(user_id: user.id).exists?
   end
