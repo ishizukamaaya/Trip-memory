@@ -46,7 +46,6 @@
    margin-top:25px;
    margin-bottom:25px;
    font-size:20px;
-   font-family: 'Alegreya Sans SC', sans-serif;
  }
  /*tag一覧見出し*/
  .text-tag{
@@ -78,30 +77,25 @@
   display: flex;
   flex-wrap: wrap;
  }
-  /*ページネーション自体のデザイン*/
-  .pagination {
-    justify-content: center;
-    margin-top: 50px;
-  }
 
-  /* top 画像スライド ここから*/
-  #box{
-    height: 400px;
-    width: 600px;
-    margin:0 auto;
-  }
-  .image1 {
-    background-image: url(image1.jpg);
-  }
-  .image2 {
-    background-image: url(image2.jpg);
-  }
-  .image3 {
-    background-image: url(image3.jpg);
-  }
-  .image4 {
-    background-image: url(image4.jpg);
-  }
+ /* top 画像スライド ここから*/
+ #box{
+  height: 400px;
+  width: 600px;
+  margin:0 auto;
+ }
+ .image1 {
+  background-image: url(image1.jpg);
+ }
+ .image2 {
+  background-image: url(image2.jpg);
+ }
+ .image3 {
+  background-image: url(image3.jpg);
+ }
+ .image4 {
+  background-image: url(image4.jpg);
+ }
  /* top 画像スライドここまで */
 
 
@@ -124,19 +118,26 @@
  }
 
  body{
-  font-family: "Kokoro";
+  font-family: 'Vollkorn', serif;
  }
 
- .pagination>li>a {
-  border: none;
-  color: #696969;
+ /*ページネーション自体のデザイン*/
+.pagination>li>a {
+  border: none;     /*枠線をなくす*/
+  color: #696969;   /*文字の色を変える*/
 }
+.pagination {
+  justify-content: center;
+  margin-top: 50px;
+ }
 
+/* 表示しているページ番号のデザイン */
 .pagination>.active>a {
-  background: #93c9ff;
-  border-radius: 15px;
+  background: #93c9ff;     /*背景の色を変える*/
+  border-radius: 15px;     /*角を丸くする*/
 }
 
+/*ホバー時のデザイン*/
 .pagination>li>a:hover {
-  border-radius: 15px;
+  border-radius: 15px;    /*角を丸くする*/
 }
