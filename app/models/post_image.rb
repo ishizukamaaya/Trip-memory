@@ -16,7 +16,19 @@ class PostImage < ApplicationRecord
 
   #検索機能ヘッダー
   def self.search(search_word)
-      PostImage.where(["title LIKE(?) OR introduction LIKE(?)", "#{search_word}","#{search_word}"])
+      tags = Tag.where("name LIKE(?)", "#{search_word}")
+      tags_ids = Array.new
+      #tagが存在するか,存在すれば
+      if tags.present?
+        tags.each do |tag|
+          #tagidを箱に入れていく
+          tags_ids.push(tag.post_images.ids)
+        end
+        tags_ids.flatten! #配列を平たくする
+      end
+      post_image_ids = PostImage.where(["title LIKE(?) OR introduction LIKE(?)", "#{search_word}","#{search_word}"]).ids
+      #idを探して足して重複しているのは削除
+      PostImage.where(id: (tags_ids + post_image_ids).uniq)
   end
 
   #tag関連

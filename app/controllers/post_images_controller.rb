@@ -66,6 +66,7 @@ class PostImagesController < ApplicationController
     @post_image_tag_all = @post_image.post_image_tags.all
     tag_ids = Array.new
     @post_image_tag_all.each do |tag|
+      #idを探して箱に入れる
       tag_ids.push(tag.tag_id)
     end
     @post_image.destroy
