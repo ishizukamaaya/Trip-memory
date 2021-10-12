@@ -46,6 +46,7 @@
    margin-top:25px;
    margin-bottom:25px;
    font-size:20px;
+   font-family: 'Alegreya Sans SC', sans-serif;
  }
  /*tag一覧見出し*/
  .text-tag{
@@ -85,10 +86,9 @@
 
   /* top 画像スライド ここから*/
   #box{
-    height: 600px;
-    margin-top:30px;
-     margin-bottom:30px;
-
+    height: 400px;
+    width: 600px;
+    margin:0 auto;
   }
   .image1 {
     background-image: url(image1.jpg);
@@ -113,3 +113,30 @@
 .unlike-btn {
  color: #e54747;
  }
+
+ body{
+  // width: 100%; /* 横幅いっぱい */
+  background-image: image-url('image4.jpg');
+  background-color:rgba(255,255,255,0.5);
+  background-blend-mode:lighten;
+  background-size: cover;
+  background-attachment: fixed;
+ }
+
+ body{
+  font-family: "Kokoro";
+ }
+
+ .pagination>li>a {
+  border: none;
+  color: #696969;
+}
+
+.pagination>.active>a {
+  background: #93c9ff;
+  border-radius: 15px;
+}
+
+.pagination>li>a:hover {
+  border-radius: 15px;
+}

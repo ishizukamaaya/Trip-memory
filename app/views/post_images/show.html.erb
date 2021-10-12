@@ -45,8 +45,8 @@
                 </div>
                 <!-- 投稿者=ログインしているユーザーだったら-->
                 <% if @post_image.user == current_user %>
-                  <%= link_to "編集",edit_post_image_path(@post_image), class: "btn btn-success m-4" %>
-                  <%= link_to "削除",post_image_path(@post_image), method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-danger" %>
+                  <%= link_to "編集",edit_post_image_path(@post_image), class: "btn btn-success m-4 btn-sm" %>
+                  <%= link_to "削除",post_image_path(@post_image), method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-danger btn-sm" %>
                 <% end %>
               </div>
             </div>
