@@ -14,6 +14,11 @@ class PostImage < ApplicationRecord
   validates :introduction, presence: true,length: {maximum: 50}
   validates :evaluation, presence: true
 
+  #検索機能ヘッダー
+  def self.search(search_word)
+      PostImage.where(["title LIKE(?) OR introduction LIKE(?)", "#{search_word}","#{search_word}"])
+  end
+
   #tag関連
   def favorited_by?(user)
     favorites.where(user_id: user.id).exists?

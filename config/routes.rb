@@ -16,7 +16,8 @@ Rails.application.routes.draw do
     resource :favorites, only:[:create,:destroy]
   end
 
-
   get "search_tag"=>"post_images#search_tag"
+  get "search" => "post_images#search"
+
 
 end

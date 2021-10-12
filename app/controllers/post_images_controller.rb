@@ -83,6 +83,12 @@ class PostImagesController < ApplicationController
     @post_images = @tag.post_images.page(params[:page]).reverse_order
   end
 
+  def search
+    @post_images = PostImage.all.search(params[:keyword])
+    @tag_list = Tag.all
+  end
+
+
   private
 
   def post_image_params
