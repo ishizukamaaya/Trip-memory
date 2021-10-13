@@ -1,4 +1,6 @@
 class PostImagesController < ApplicationController
+  before_action :authenticate_user!
+  before_action :ensure_correct_user, only: [:edit, :update, :destroy]
 
   def new
     @post_image = PostImage.new
@@ -98,6 +100,14 @@ class PostImagesController < ApplicationController
 
   def tag_params
     params.require(:post_image).permit(:name)
+  end
+  
+  #ログインuserが投稿したuserではなかったら一覧へ
+  def ensure_correct_user
+    @post_image = PostImage.find(params[:id])
+    unless @post_image.user == current_user
+    redirect_to post_images_path
+    end
   end
 
 end
