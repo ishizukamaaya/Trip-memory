@@ -22,11 +22,6 @@
                   <p><%= attachment_image_tag @post_image.user, :profile_image, format: 'jpeg', fallback: "img/no_image.jpg", size: "80x80", class:"mt-3 rounded-circle" %></p>
                   <p class="card-user"><%= @post_image.user.name %></p>
                 <% end %>
-                <!--コメント欄-->
-                <%= form_with model:[@post_image,@comment] do |f| %>
-                  <%= f.text_area :comment, size:"12x3", placeholder: "コメント欄" %>
-                  <p><%= f.submit "送信", class: "btn btn-success" %></p>
-                <% end %>
               </div>
               <div class="col-6 offset-md-2">
                 <!--タイトル-->
@@ -41,7 +36,6 @@
                 </p>
                 <!--評価表示-->
                 <p class="post_image-evaluation" data-score="<%= @post_image.evaluation %>"></p>
-
                 <!--投稿日-->
                 <p class="card-create"><i class="fas fa-calendar-minus"></i>：<%= @post_image.created_at.strftime('%Y/%m/%d') %></p>
                 <!--いいねテンプレート-->
@@ -55,18 +49,25 @@
                 <% end %>
               </div>
             </div>
-            <!--<div class="row">-->
 
-              <div class="col-10 offset-md-1">
+            <div class="row">
+              <div class="col-4 offset-md-1">
                 <!--コメント件数カウント-->
                 <div id="post_comment_<%= @post_image.id %>">
                   <p class="comments-count">コメント数:<%= @post_image.comments.count %></p>
                 </div>
-                <!--コメント表示テンプレート-->
+                <!--コメント欄-->
+                <%= form_with model:[@post_image,@comment] do |f| %>
+                  <%= f.text_area :comment, size:"20x3", placeholder: "コメント欄" %>
+                  <p class="text-center ml-2"><%= f.submit "送信", class: "btn btn-success" %></p>
+                <% end %>
+              </div>
+              <!--コメント表示テンプレート-->
+              <div class="col-6 offset-md-1">
                 <div class="comments">
                   <%= render "comments/comment", post_image: @post_image %>
                 </div>
-              <!--</div>-->
+              </div>
             </div>
           </div>
         </div>

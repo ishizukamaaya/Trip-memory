@@ -22,7 +22,7 @@
         <%= link_to "評価の高い順",user_path(@user, sort: 'evaluation DESC'), class: "text-dark" %>
       </p>
       <%= render 'post_images/index', post_images: @post_images %>
-      <%= paginate @post_images %>
+      <!--<%= paginate @post_images %>-->
     </div>
   </div>
 </div>

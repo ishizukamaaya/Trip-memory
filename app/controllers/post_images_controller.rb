@@ -19,7 +19,11 @@ class PostImagesController < ApplicationController
   end
 
   def index
-    @post_images = PostImage.page(params[:page]).per(6).order(params[:sort])
+    if params[:sort].nil? #もし、sortが空だったら
+      @post_images = PostImage.page(params[:page]).per(6).order(created_at: :desc) #新着順
+    else
+      @post_images = PostImage.page(params[:page]).per(6).order(params[:sort]) #そうじゃなかったらsort順にする
+    end
     @ranks = PostImage.find(Favorite.group(:post_image_id).where(created_at: Time.current.all_week).order('count(post_image_id) desc').limit(3).pluck(:post_image_id)) #今週、月曜から日曜日のいいねランキング
     @tag_list = Tag.all
   end
@@ -101,7 +105,7 @@ class PostImagesController < ApplicationController
   def tag_params
     params.require(:post_image).permit(:name)
   end
-  
+
   #ログインuserが投稿したuserではなかったら一覧へ
   def ensure_correct_user
     @post_image = PostImage.find(params[:id])

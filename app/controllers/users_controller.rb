@@ -4,8 +4,13 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    @post_images = PostImage.page(params[:page]).per(6).order(params[:sort])
     @tag_list = Tag.all
+
+    if params[:sort].nil? #もし、sortが空だったら
+      @post_images = @user.post_images.page(params[:page]).per(6).order(created_at: :desc) #新着順
+    else
+      @post_images = @user.post_images.page(params[:page]).per(6).order(params[:sort]) #そうじゃなかったらsort順にする
+    end
   end
 
   def edit
