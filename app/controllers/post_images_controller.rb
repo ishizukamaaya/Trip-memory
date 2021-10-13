@@ -63,6 +63,7 @@ class PostImagesController < ApplicationController
     end
       redirect_to post_image_path(@post_image)
     else
+      @tag_list = params[:post_image][:name]
       render :edit
     end
   end
@@ -115,5 +116,3 @@ class PostImagesController < ApplicationController
   end
 
 end
-
-
