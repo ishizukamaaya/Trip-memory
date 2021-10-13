@@ -12,5 +12,4 @@ Kaminari.configure do |config|
   # config.max_pages = nil
   # config.params_on_first_page = false
 
-  config.default_per_page = 6 #1ページに投稿6表示
 end

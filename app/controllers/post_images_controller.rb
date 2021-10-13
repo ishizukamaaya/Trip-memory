@@ -17,7 +17,7 @@ class PostImagesController < ApplicationController
   end
 
   def index
-    @post_images = PostImage.page(params[:page]).reverse_order
+    @post_images = PostImage.page(params[:page]).per(6).order(params[:sort])
     @ranks = PostImage.find(Favorite.group(:post_image_id).where(created_at: Time.current.all_week).order('count(post_image_id) desc').limit(3).pluck(:post_image_id)) #今週、月曜から日曜日のいいねランキング
     @tag_list = Tag.all
   end

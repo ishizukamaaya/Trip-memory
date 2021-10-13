@@ -14,6 +14,11 @@
         <%= render 'ranks', ranks: @ranks %>
 
       <h2 class="text-main">投稿一覧</h2>
+        <%= link_to "新着順",post_images_path(sort: 'created_at DESC'), class: "text-dark" %>
+        |
+        <%= link_to "古い順",post_images_path(sort: 'created_at ASC'), class: "text-dark" %>
+        |
+        <%= link_to "評価の高い順",post_images_path(sort: 'post_images.favorite DESC'), class: "text-dark" %>
         <%= render 'index', post_images: @post_images, user: @user %>
         <%= paginate @post_images %>
     </div>

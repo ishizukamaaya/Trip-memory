@@ -14,6 +14,12 @@
     </div>
     <div class='col-md-7 offset-md-1 text-center'>
       <h2 class="text-main">マイページ</h2>
+      <%= link_to "新着順",user_path(@user, sort: 'created_at DESC'), class: "text-dark" %>
+      |
+      <%= link_to "古い順",user_path(@user, sort: 'created_at ASC'), class: "text-dark" %>
+      |
+      <%= link_to "評価の高い順",user_path(@user, sort: 'evaluation DESC'), class: "text-dark" %>
+
       <%= render 'post_images/index', post_images: @post_images %>
       <%= paginate @post_images %>
     </div>
