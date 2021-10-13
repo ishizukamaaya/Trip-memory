@@ -28,7 +28,7 @@ class UsersController < ApplicationController
 
   def destroy
     @user = User.find(params[:id])
-    @post_image_tag_all = @post_image.post_image_tags.all #全てのtag取得
+    @post_image_tag_all = @user.post_image_tags.all #全てのtag取得
     tag_ids = Array.new
     @post_image_tag_all.each do |tag| #tagを取り出す
       tag_ids.push(tag.tag_id)
