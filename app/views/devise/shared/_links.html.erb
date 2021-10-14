@@ -1,13 +1,9 @@
 <%- if controller_name != 'sessions' %>
-  <%= link_to "ログインはこちらへ", new_session_path(resource_name) %><br />
+  <u><%= link_to "ログインはこちらへ", new_session_path(resource_name), class: "text-dark" %></u><br />
 <% end %>
 
 <%- if devise_mapping.registerable? && controller_name != 'registrations' %>
-  <%= link_to "新規登録はこちらへ", new_registration_path(resource_name) %><br />
-<% end %>
-
-<%- if devise_mapping.recoverable? && controller_name != 'passwords' && controller_name != 'registrations' %>
-  <%= link_to "パスワードを忘れた方はこちらへ", new_password_path(resource_name) %><br />
+  <u><%= link_to "新規登録はこちらへ", new_registration_path(resource_name), class: "text-dark" %></u><br />
 <% end %>
 
 <%- if devise_mapping.confirmable? && controller_name != 'confirmations' %>
