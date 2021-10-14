@@ -8,8 +8,13 @@
   </tr>
   <tr>
     <th>紹介文</th>
-
-    <th><%=safe_join(user.introduction.split("\n"),tag(:br))%></th>
+    <th>
+      <%if user.introduction.nil? %> <!--紹介文が「空」のままだとエラーが出るのでnil?=trueの時を追加-->
+        <%= user.introduction %>
+      <% else %>
+        <%= safe_join(user.introduction.split("\n"),tag(:br)) %> <!--紹介文が「空」じゃない時は改行反映-->
+      <% end %>
+    </th>
   </tr>
   <tr>
     <th>フォロー中</th>
