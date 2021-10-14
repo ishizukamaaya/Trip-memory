@@ -13,9 +13,9 @@ class User < ApplicationRecord
   has_many :relationships, class_name: "Relationship", foreign_key: "follower_id", dependent: :destroy #フォローしてる人を取得
   has_many :followings, through: :relationships, source: :followed #自分がフォローしてる人
 
-  has_many :post_image_tags
-  has_many :tags, through: :post_image_tags
-
+  # has_many :post_image_tags
+  has_many :post_image_tags, dependent: :destroy
+  has_many :tags, through: :post_image_tags, dependent: :destroy
   attachment :profile_image
 
   #バリデーション

@@ -26,20 +26,26 @@ class UsersController < ApplicationController
     end
   end
 
+
+
   def destroy
     @user = User.find(params[:id])
-    # @post_image_tag_all = @user.post_image_tags.all #全てのtag取得
-    # tag_ids = Array.new
-    # @post_image_tag_all.each do |tag| #tagを取り出す
-    #   tag_ids.push(tag.tag_id)
-    # end
+    post_images = @user.post_images  #=> [{post_image_id: 3, XXX....}, {post_image_id: 4, XXX....}]
+    if(post_images.present?)
+      post_images.each do |post_image|
+        post_image_tags = post_image.post_image_tags
+
+        if(post_image_tags.present?)
+          post_image_tags.each do |post_image_tag|
+            target = Tag.find_by(id: post_image_tag.tag_id)
+            target.destroy
+          end
+        end
+        post_image_tags.destroy #タグ一覧からも削除
+      end
+    end
     @user.destroy
-    # tag_ids.each do |tag_id|
-    #   if PostImageTag.where(tag_id: tag_id).count == 0 #tagが０だったらtagをdestroy
-    #     Tag.find(tag_id).destroy
-    #   end
     redirect_to :root
-    # end
   end
 
   def unsubscribe
