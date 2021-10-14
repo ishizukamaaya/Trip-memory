@@ -2,16 +2,16 @@ class PostImage < ApplicationRecord
 
   belongs_to :user
   attachment :image
-  has_many :comments,dependent: :destroy
-  has_many :favorites,dependent: :destroy
+  has_many :comments, dependent: :destroy
+  has_many :favorites, dependent: :destroy
 
-  has_many :post_image_tags,dependent: :destroy
-  has_many :tags,through: :post_image_tags
+  has_many :post_image_tags, dependent: :destroy
+  has_many :tags, through: :post_image_tags
 
   #バリデーション
   validates :image, presence: true
-  validates :title, presence: true,length: {maximum: 10}
-  validates :introduction, presence: true,length: {maximum: 50}
+  validates :title, presence: true, length: { maximum: 10 }
+  validates :introduction, presence: true, length: { maximum: 50 }
   validates :evaluation, presence: true
 
 
@@ -27,7 +27,7 @@ class PostImage < ApplicationRecord
         end
         tags_ids.flatten! #配列を平たくする
       end
-      post_image_ids = PostImage.where(["title LIKE(?) OR introduction LIKE(?)", "#{search_word}","#{search_word}"]).ids
+      post_image_ids = PostImage.where(["title LIKE(?) OR introduction LIKE(?)", "#{search_word}", "#{search_word}"]).ids
       #idを探して足して重複しているのは削除
       PostImage.where(id: (tags_ids + post_image_ids).uniq)
   end
