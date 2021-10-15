@@ -9,10 +9,9 @@ class PostImagesController < ApplicationController
   def create
     @post_image = PostImage.new(post_image_params)
     @post_image.user_id = current_user.id
+    tag_list = params[:post_image][:name].split(',')
     if @post_image.save
-      tag_list = tag_params[:name].split(',')
       @post_image.save_tags(tag_list)
-      # byebug
       redirect_to post_image_path(@post_image)
     else
       render :new
@@ -35,7 +34,6 @@ class PostImagesController < ApplicationController
     @comment = Comment.new
     @post_image_tags = @post_image.tags
     @tag_list = Tag.all
-    # byebug
   end
 
   def edit
