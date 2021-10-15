@@ -1,19 +1,11 @@
 <div class='container px-5 px-sm-0 mt-4' style="margin-bottom:200px;">
   <div class='row'>
     <div class='col-md-4'>
-      <h2 class="text-main">プロフィール</h2>
-
+      <h2 class="text-main  text-center">プロフィール</h2>
       <%= render 'profile', user: @user %>
-
-      <h2 class="text-tag">タグ一覧</h2>
-      <% @tag_list.each do |list|%>
-        <p><%= link_to list.name ,search_tag_path(tag_id: list.id), class: "text-dark" %>
-        <%="(#{list.post_images.count})" %></p>
-      <% end %>
-
     </div>
     <div class='col-md-7 offset-md-1'>
-      <h2 class="text-main">マイページ</h2>
+      <h2 class="text-main  text-center">マイページ</h2>
       <p class="text-center">
         <%= link_to "新着順",user_path(@user, sort: 'created_at DESC'), class: "text-dark" %>
         |
@@ -22,7 +14,7 @@
         <%= link_to "評価の高い順",user_path(@user, sort: 'evaluation DESC'), class: "text-dark" %>
       </p>
       <%= render 'post_images/index', post_images: @post_images %>
-      <!--<%= paginate @post_images %>-->
+      <%= paginate @post_images %>
     </div>
   </div>
 </div>

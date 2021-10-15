@@ -18,20 +18,20 @@
   </tr>
   <tr>
     <th>フォロー中</th>
-    <td id='following-count_#{ user.id }'>
+    <td id='following-count_<%= user.id %>'>
       <%= link_to user.followings.count,user_followings_path(user) ,class: "text-dark" %>
     </td>
   </tr>
   <tr>
     <th>フォローワー</th>
-    <td id='follower-count_#{ user.id }'>
+    <td id='follower-count_<%= user.id %>'>
       <%=link_to user.followers.count, user_followers_path(user) ,class: "text-dark" %>
     </td>
   </tr>
 </table>
 
 <div class="row">
-  <span id='follow-button_#{ user.id }'>
+  <span id='follow-button_<%= user.id %>'>
     <%= render "follow_btn", user: user %>
   </span>
 </div>

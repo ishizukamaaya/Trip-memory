@@ -6,7 +6,7 @@ Rails.application.routes.draw do
 
   get "user/unsubscribe" => "users#unsubscribe"
   resources :users, only: [:show, :edit, :update, :destroy] do
-    resource :relationships, only: [:create, :destroy]
+    resources :relationships, only: [:create, :destroy]
     get 'followings' => 'relationships#followings', as: 'followings'
     get 'followers' => 'relationships#followers', as: 'followers'
   end

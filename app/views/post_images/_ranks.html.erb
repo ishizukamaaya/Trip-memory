@@ -1,7 +1,6 @@
 <div class="card-block">
   <% ranks.each do |post_image| %>
     <!--投稿画像クリックで詳細画面へ-->
-    <!--投稿画像クリックで詳細画面へ-->
     <div class="card m-2" style="width:18rem">
       <%= link_to post_image_path(post_image) do %>
         <%= attachment_image_tag post_image, :image, class:"card-img-top"; %>

@@ -2,7 +2,7 @@
   <div class="row">
     <div class="col-sm-2">
       <!--タグ一覧サイドバー-->
-      <h2 class="text-tag">タグ一覧</h2>
+      <h2 class="text-tag text-center">タグ一覧</h2>
       <% @tag_list.each do |list|%>
         <p><%= link_to list.name ,search_tag_path(tag_id: list.id), class: "text-dark" %>
         <%="(#{list.post_images.count})" %></p>
@@ -11,10 +11,10 @@
     </div>
     <div class="mx-auto col-sm-10 mt-4">
 
-      <h2 class="text-main">今週のランキング</h2>
+      <h2 class="text-main text-center">今週のいいねランキング</h2>
         <%= render 'ranks', ranks: @ranks %>
 
-      <h2 class="text-main">投稿一覧</h2>
+      <h2 class="text-main text-center">投稿一覧</h2>
       <p class="text-center">
         <%= link_to "新着順",post_images_path(sort: 'created_at DESC'), class: "text-dark" %>
         |
