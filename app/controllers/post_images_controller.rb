@@ -25,7 +25,7 @@ class PostImagesController < ApplicationController
       @post_images = PostImage.page(params[:page]).per(6).order(params[:sort]) #そうじゃなかったらsort順にする
     end
     @ranks = PostImage.find(Favorite.group(:post_image_id).where(created_at: Time.current.all_week).order('count(post_image_id) desc').limit(3).pluck(:post_image_id)) #今週、月曜から日曜日のいいねランキング
-    @tag_list = Tag.all
+    @tag_list = Tag.joins(:post_image_tags).distinct #結合して重複のないデータを取得(1つ以上データがあれば)
   end
 
   def show
@@ -33,7 +33,7 @@ class PostImagesController < ApplicationController
     @user = @post_image.user
     @comment = Comment.new
     @post_image_tags = @post_image.tags
-    @tag_list = Tag.all
+    @tag_list = Tag.joins(:post_image_tags).distinct
   end
 
   def edit
@@ -49,18 +49,8 @@ class PostImagesController < ApplicationController
   def update
     @post_image = PostImage.find(params[:id])
     tag_list = params[:post_image][:name].split(',')
-    @post_image_tag_all = @post_image.post_image_tags.all #全てのtag取得
-    tag_ids = Array.new
-    @post_image_tag_all.each do |tag| #tagを取り出す
-      tag_ids.push(tag.tag_id)
-    end
     if @post_image.update(post_image_params)
       @post_image.save_tags(tag_list)
-      tag_ids.each do |tag_id|
-        if PostImageTag.where(tag_id: tag_id).count == 0 #tagが０だったらtagをdestroy
-          Tag.find(tag_id).destroy
-        end
-    end
       redirect_to post_image_path(@post_image)
     else
       @tag_list = params[:post_image][:name]
@@ -70,18 +60,7 @@ class PostImagesController < ApplicationController
 
   def destroy
     @post_image = PostImage.find(params[:id])
-    @post_image_tag_all = @post_image.post_image_tags.all
-    tag_ids = Array.new
-    @post_image_tag_all.each do |tag|
-      #idを探して箱に入れる
-      tag_ids.push(tag.tag_id)
-    end
     @post_image.destroy
-    tag_ids.each do |tag_id|
-      if PostImageTag.where(tag_id: tag_id).count == 0 #tagが０だったらtagをdestroy
-        Tag.find(tag_id).destroy
-      end
-    end
     redirect_to post_images_path
   end
 

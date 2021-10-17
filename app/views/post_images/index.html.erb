@@ -4,7 +4,7 @@
       <!--タグ一覧サイドバー-->
       <h2 class="text-tag text-center">タグ一覧</h2>
       <% @tag_list.each do |list|%>
-        <p><%= link_to list.name ,search_tag_path(tag_id: list.id), class: "text-dark" %>
+        <p><%= link_to list.name, search_tag_path(tag_id: list.id), class: "text-dark" %>
         <%="(#{list.post_images.count})" %></p>
       <% end %>
 

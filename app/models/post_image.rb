@@ -14,7 +14,6 @@ class PostImage < ApplicationRecord
   validates :introduction, presence: true, length: { maximum: 50 }
   validates :evaluation, presence: true
 
-
   #検索機能ヘッダー
   def self.search(search_word)
       tags = Tag.where("name LIKE(?)", "#{search_word}")

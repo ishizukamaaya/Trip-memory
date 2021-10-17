@@ -4,8 +4,6 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    @tag_list = Tag.all
-
     if params[:sort].nil? #もし、sortが空だったら
       @post_images = @user.post_images.page(params[:page]).per(6).order(created_at: :desc) #新着順
     else
@@ -26,24 +24,8 @@ class UsersController < ApplicationController
     end
   end
 
-
-
   def destroy
     @user = User.find(params[:id])
-    post_images = @user.post_images  #=> [{post_image_id: 3, XXX....}, {post_image_id: 4, XXX....}]
-    if(post_images.present?)
-      post_images.each do |post_image|
-        post_image_tags = post_image.post_image_tags
-
-        if(post_image_tags.present?)
-          post_image_tags.each do |post_image_tag|
-            target = Tag.find_by(id: post_image_tag.tag_id)
-            target.destroy
-          end
-        end
-        post_image_tags.destroy #タグ一覧からも削除
-      end
-    end
     @user.destroy
     redirect_to :root
   end
