@@ -22,7 +22,7 @@
             <!--説明-->
             <p class="card-text"><%=safe_join(post_image.introduction.split("\n"),tag(:br))%></p>
             <!--投稿日-->
-            <p class="card-create"><i class="fas fa-calendar-minus"></i>：<%= post_image.created_at.strftime('%Y/%m/%d') %></p>
+            <p class="card-create"><%= post_image.created_at.strftime('%Y/%m/%d') %></p>
             <!--いいねテンプレート-->
             <div class="favorite_buttons_<%= post_image.id %>">
               <%= render "favorites/favorite-btn", post_image: post_image %>
