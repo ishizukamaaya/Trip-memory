@@ -31,13 +31,13 @@
                 <!--タグ表示-->
                 <p>
                   <% @post_image.tags.each do |tag| %>
-                    #<%= link_to tag.name, search_tag_path(tag_id: tag.id)%>
+                    #<%= link_to tag.name, search_tag_path(tag_id: tag.id) %>
                   <% end %>
                 </p>
                 <!--評価表示-->
                 <p class="post_image-evaluation" data-score="<%= @post_image.evaluation %>"></p>
                 <!--投稿日-->
-                <p class="card-create"><i class="fas fa-calendar-minus"></i>：<%= @post_image.created_at.strftime('%Y/%m/%d') %></p>
+                <p class="card-create"><%= @post_image.created_at.strftime('%Y/%m/%d') %></p>
                 <!--いいねテンプレート-->
                 <div id="favorite_buttons_<%= @post_image.id %>">
                   <%= render "favorites/favorite-btn", post_image: @post_image %>

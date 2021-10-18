@@ -31,10 +31,10 @@
  /*ここまで*/
 
  /*topのボタンの位置*/
- .inner {
-   display: flex;
-   justify-content: space-evenly;
- }
+ // .inner {
+ //   display: flex;
+ //   justify-content: space-evenly;
+ // }
  /*各ページタイトル*/
  .text-main{
    border-top:solid 1px #000000;
@@ -113,24 +113,78 @@
   font-family:  'Vollkorn', serif;
  }
 
- /*ページネーション自体のデザイン*/
-.pagination>li>a {
-  border: none;   /*枠線をなくす*/
-  color: #696969; /*文字の色を変える*/
+
+//  /*ページネーション自体のデザイン*/
+// .pagination>li>a {
+//   border: none;   /*枠線をなくす*/
+//   color: #696969; /*文字の色を変える*/
+// }
+// .pagination {
+//   justify-content: center;
+//   margin-top: 50px;
+//  }
+
+// /* 表示しているページ番号のデザイン */
+// .pagination>.active>a {
+//   background: #93c9ff; /*背景の色を変える*/
+//   border-radius: 15px; /*角を丸くする*/
+// }
+
+// /*ホバー時のデザイン*/
+// .pagination>li>a:hover {
+//   border-radius: 15px; /*角を丸くする*/
+// }
+
+.pagination__wrapper {
+  width:100%;
+  margin:auto;
 }
 .pagination {
   justify-content: center;
   margin-top: 50px;
- }
-
-/* 表示しているページ番号のデザイン */
-.pagination>.active>a {
-  background: #93c9ff; /*背景の色を変える*/
-  border-radius: 15px; /*角を丸くする*/
 }
-
-/*ホバー時のデザイン*/
-.pagination>li>a:hover {
-  border-radius: 15px; /*角を丸くする*/
+.pagination ul {
+  display: flex;
+  display: -ms-flexbox;
+  display: -webkit-box;
+  display: -webkit-flex;
+  flex-wrap: wrap;
+  border-radius: 3px;
 }
-
+.pagination li {
+  overflow: hidden;
+  margin: 4px;
+  padding: 0;
+}
+.pagination a, .pagination span {
+  display: inline-block;
+  width: 40px;
+  height: 40px;
+  margin: 0 3px 0 0;
+  border-radius: 50%;
+  text-decoration: none;
+  color: #666;
+  border:2px solid #fff;
+}
+.pagination a:hover {
+  display: inline-block;
+  width: 40px;
+  height: 40px;
+  margin: 0 3px 0 0;
+  border-radius: 50%;
+  text-decoration: none;
+  color: #fff;
+  background:#999;
+  border:2px solid #999;
+}
+.pagination .pagenation-current {
+  color: #f96da5;
+  cursor: default;
+  margin: 0 3px 0 0;
+  border:2px solid #f96da5;
+}
+.page-numbers {
+  width: auto;
+  padding: 0;
+  background: transparent
+}

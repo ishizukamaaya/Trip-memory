@@ -11,10 +11,10 @@
 
         <% if user_signed_in? %>
         <!--ログインしている時-->
-          <li class="mr-3"><%= link_to "マイページ",user_path(current_user),class: 'nav-link text-light' %></li>
-          <li class="mr-3"><%= link_to "投稿フォーム",new_post_image_path,class: 'nav-link text-light' %></li>
-          <li class="mr-3"><%=link_to "投稿一覧",post_images_path,class: 'nav-link text-light' %></li>
-          <li class="mr-3"><%= link_to "ログアウト", destroy_user_session_path, method: :delete,class: 'nav-link text-light' %></li>
+          <li class="mr-3"><%= link_to "マイページ",user_path(current_user), class: 'nav-link text-light' %></li>
+          <li class="mr-3"><%= link_to "投稿フォーム",new_post_image_path, class: 'nav-link text-light' %></li>
+          <li class="mr-3"><%=link_to "投稿一覧",post_images_path, class: 'nav-link text-light' %></li>
+          <li class="mr-3"><%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: 'nav-link text-light' %></li>
           <li>
             <%= form_with url: search_path, method: :get, local: true do |f| %>
               <%= f.text_field :keyword, placeholder: "キーワード検索" %>
