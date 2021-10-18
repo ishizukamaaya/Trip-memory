@@ -4,10 +4,10 @@
 
       <h2 class="text-main text-center">新規登録</h4>
 
-
       <%= form_with model: @user, url: user_registration_path, local: true do |f| %>
         <%= render "devise/shared/error_messages", resource: resource %>
         <div class="row">
+
           <div class='col-sm-4 offset-md-2 mt-3'>
             <div class="field mt-4">
               <%= f.label :名前 %>
@@ -20,11 +20,9 @@
               <% if @minimum_password_length %>
               <em>(<%= @minimum_password_length %> 文字以上)</em>
               <% end %><br />
-
             </div>
             <div class="field mt-3">
               <%= f.label :パスワード確認用 %>
-
             </div>
           </div>
 
@@ -46,8 +44,10 @@
             <%= f.submit "新規登録", class:"btn btn-success" %>
           </div>
         </div>
-        <div class="render mt-3">
-          <%= render "devise/shared/links" %>
+        <div class="row">
+          <div class='col-sm-4 offset-md-2 mt-3'>
+            <%= render "devise/shared/links" %>
+          </div>
         </div>
       <% end %>
     </div>

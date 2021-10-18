@@ -11,10 +11,12 @@
           <div class="image4"></div>
         </div>
       </div>
-      <h6 class="mt-4">ログイン又は新規登録をお願いします</h6>
+      <h6 class="mt-5">ログイン又は新規登録をお願いします</h6>
       <div class="content">
-        <%= link_to "ログイン", new_user_session_path, class: "btn btn-info w-25 m-4" %>
-        <%= link_to "新規登録", new_user_registration_path, class:"btn btn-success w-25 m-4" %>
+  　　  　<div class="inner">
+          <%= link_to "ログイン", new_user_session_path, class: "btn btn-info w-25" %>
+          <%= link_to "新規登録", new_user_registration_path, class:"btn btn-success w-25" %>
+        </div>
       </div>
     </div>
   </div>
