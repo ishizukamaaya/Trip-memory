@@ -1,10 +1,9 @@
 <div class="container">
   <div class="row">
     <div class="mx-auto col-sm-7 mt-5">
-
       <h2 class="text-main text-center">ログイン</h4>
-
       <%= form_with model: @user, url: user_session_path, local: true do |f| %>
+
       <div class="row">
         <div class='col-sm-4 offset-md-2 mt-3'>
           <div class="field mt-4">
@@ -14,6 +13,7 @@
             <%= f.label :パスワード %>
           </div>
         </div>
+
         <div class = "col-sm-5 mt-3">
           <div class="field mt-4">
             <%= f.email_field :email, autofocus: true, autocomplete: "email" %>

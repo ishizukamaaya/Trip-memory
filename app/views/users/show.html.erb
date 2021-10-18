@@ -13,6 +13,7 @@
         |
         <%= link_to "評価の高い順",user_path(@user, sort: 'evaluation DESC'), class: "text-dark" %>
       </p>
+      <!--ユーザーの投稿一覧-->
       <%= render 'post_images/index', post_images: @post_images %>
       <%= paginate @post_images %>
     </div>

@@ -31,14 +31,15 @@
 </table>
 
 <div class="row">
+  <!--フォローボタンテンプレート-->
   <span id='follow-button_<%= user.id %>'>
     <%= render "relationships/follow_btn", user: user %>
   </span>
 </div>
 
 <div class='row mt-3'>
+  <!--userがログインuserだったら編集可能-->
   <% if user.id == current_user.id %>
-
     <%= link_to '設定・編集',edit_user_path(user),class: "btn btn-outline-secondary btn-block fas fa-user-cog" %>
   <% end %>
 </div>
