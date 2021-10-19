@@ -7,17 +7,19 @@
       <div class="row">
         <div class='col-sm-4 offset-md-2 mt-3'>
           <div class="field mt-4">
-          <%= f.label :メールアドレス %>
-        </div>
+            <%= f.label :メールアドレス %>
+          </div>
           <div class="field mt-3">
             <%= f.label :パスワード %>
           </div>
         </div>
 
         <div class = "col-sm-5 mt-3">
+          <!--メールアドレス-->
           <div class="field mt-4">
             <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
           </div>
+          <!--パスワード-->
           <div class="field mt-3">
             <%= f.password_field :password, autocomplete: "current-password" %>
           </div>
@@ -28,6 +30,7 @@
       </div>
       <% end %>
       <div class="row">
+        <!--新規登録はこちら-->
         <div class='col-sm-4 offset-md-2 mt-3'>
           <%= render "devise/shared/links" %>
         </div>

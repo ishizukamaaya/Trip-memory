@@ -1,8 +1,9 @@
 <div class="container" style="margin-bottom:200px;">
   <div class="row">
-    <div class="mx-auto col-sm-9">
+    <div class="mx-auto col-sm-9 mt-4">
       <h2 class="text-main  text-center">編集フォーム</h2>
       <%= render 'layouts/error', obj: @post_image %>
+
       <%= form_with model: @post_image,local:true do |f| %>
         <div class="row">
           <div class='col-sm-2 offset-md-1 mt-3'>
@@ -22,38 +23,44 @@
               <p>タグ</p>
             </div><br>
           </div>
-            <div class = "col-sm-7 offset-md-1 mt-3">
-              <div class = "field">
-                <p><%= f.attachment_field :image,class:"form-control-static" %></p>
-              </div><br>
-              <div class = "field">
-                <p><%= f.text_field :title, placeholder:'タイトル(10字以内)', class:"form-control col-8" %></p>
-              </div><br>
-              <div class = "field">
-                <p><%= f.text_area :introduction, size:"35x4", placeholder:'説明文(20字以内)', class:"form-control col-8" %></p>
-              </div><br>
-              <div class="field">
-                <p class="post_image-evaluation" data-score="<%= @post_image.evaluation %>"></p>
-              </div><br>
-              <div class = "field">
-                <p><%= f.text_field :name, value: @tag_list, placeholder:'海外,旅行,海 (複数入力は , で区切ってください)',class:"form-control col-8" %></p>
-              </div><br>
-              <div class="actions">
-                <%= f.submit "編集", class: "btn btn-success w-25 ml-5" %>
-              </div>
+
+          <div class="col-sm-7 offset-md-1 mt-3">
+            <!--画像-->
+            <div class="field">
+              <p><%= f.attachment_field :image,class:"form-control-static" %></p>
+            </div><br>
+            <!--タイトル-->
+            <div class="field">
+              <p><%= f.text_field :title, placeholder:'タイトル(10字以内)', class:"form-control col-8" %></p>
+            </div><br>
+            <!--説明-->
+            <div class = "field">
+              <p><%= f.text_area :introduction, size:"35x4", placeholder:'説明文(20字以内)', class:"form-control col-8" %></p>
+            </div><br>
+            <!--評価-->
+            <div class="field">
+              <p class="post_image-evaluation" data-score="<%= @post_image.evaluation %>"></p>
+            </div><br>
+            <!--タグ-->
+            <div class="field">
+              <p><%= f.text_field :name, value: @tag_list, placeholder:'海外,旅行,海 (複数入力は , で区切ってください)',class:"form-control col-8" %></p>
+            </div><br>
+            <div class="actions">
+              <%= f.submit "編集", class: "btn btn-success w-25 ml-5" %>
+            </div>
+          </div>
         </div>
       <% end %>
-      <!--評価-->
-      <script>
-        $('.post_image-evaluation').raty({
-          starOn: "<%= asset_path('star-on.png') %>",
-          starOff: "<%= asset_path('star-off.png') %>",
-          starHalf: "<%= asset_path('star-half.png') %>",
-          scoreName: 'post_image[evaluation]',
-          half: true,
-        });
-      </script>
     </div>
   </div>
 </div>
-
+<!--評価-->
+<script>
+  $('.post_image-evaluation').raty({
+    starOn: "<%= asset_path('star-on.png') %>",
+    starOff: "<%= asset_path('star-off.png') %>",
+    starHalf: "<%= asset_path('star-half.png') %>",
+    scoreName: 'post_image[evaluation]',
+    half: true,
+  });
+</script>

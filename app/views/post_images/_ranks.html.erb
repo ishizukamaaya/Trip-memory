@@ -1,3 +1,4 @@
+<!--cardひとかたまり-->
 <div class="card-block">
   <% ranks.each do |post_image| %>
     <!--投稿画像クリックで詳細画面へ-->
@@ -27,6 +28,7 @@
             <div class="favorite_buttons_<%= post_image.id %>">
               <%= render "favorites/favorite-btn", post_image: post_image %>
             </div>
+            <!--コメント数-->
             <p><%= link_to "コメント#{post_image.comments.count} 件", post_image_path(post_image), class: "text-dark" %></p>
           </div>
         </div>

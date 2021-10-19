@@ -8,8 +8,9 @@
         <%="(#{list.post_images.count})" %></p>
       <% end %>
     </div>
+
     <div class="mx-auto col-sm-10 mt-4 text-center">
-    <!--タグで検索された一覧-->
+     <!--タグで検索された一覧-->
   　 <h2 class="text-tag-index">タグが"<%=@tag.name%>"の投稿一覧</h2>
       <%= render 'index', post_images: @post_images %>
       <%= paginate @post_images %>

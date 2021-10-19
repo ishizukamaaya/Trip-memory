@@ -4,11 +4,13 @@
       <!--タグ一覧サイドバー-->
       <h2 class="text-tag text-center">タグ一覧</h2>
       <% @tag_list.each do |list|%>
+        <!--タグ名でタグ検索リンク-->
         <p><%= link_to list.name ,search_tag_path(tag_id: list.id), class: "text-dark" %>
         <%="(#{list.post_images.count})" %></p>
       <% end %>
     </div>
-    <div class="mx-auto col-sm-10 mt-4 ">
+    
+    <div class="mx-auto col-sm-10 mt-4">
       <h2 class="text-main  text-center">投稿詳細</h2>
         <!--cardひとかたまり-->
         <div class="card mx-auto" style="width:40rem">
@@ -17,16 +19,16 @@
           <div class="card-body">
             <div class="row">
           　　<div class="col-3 text-center">
-              <!--名前と写真を押すとマイページへ-->
+                <!--プロフィール名前と写真を押すとマイページへ-->
                 <%= link_to user_path(@user), class: "text-dark" do %>
-                  <p><%= attachment_image_tag @post_image.user, :profile_image, format: 'jpeg', fallback: "img/no_image.jpg", size: "80x80", class:"mt-3 rounded-circle" %></p>
+                  <p><%= attachment_image_tag @post_image.user, :profile_image, format: 'jpeg', fallback: "img/no_image.jpg", size: "100x100", class: "mt-3 rounded-circle" %></p>
                   <p class="card-user"><%= @post_image.user.name %></p>
                 <% end %>
               </div>
               <div class="col-6 offset-md-2">
                 <!--タイトル-->
                 <p class="card-title"><i class="fas fa-camera"></i>：<%= @post_image.title %></p>
-                <!--説明文-->
+                <!--説明文(改行される)-->
                 <p class="card-text"><%=safe_join(@post_image.introduction.split("\n"),tag(:br))%></p>
                 <!--タグ表示-->
                 <p>
@@ -38,14 +40,14 @@
                 <p class="post_image-evaluation" data-score="<%= @post_image.evaluation %>"></p>
                 <!--投稿日-->
                 <p class="card-create"><%= @post_image.created_at.strftime('%Y/%m/%d') %></p>
-                <!--いいねテンプレート-->
+                <!--いいねボタン-->
                 <div id="favorite_buttons_<%= @post_image.id %>">
                   <%= render "favorites/favorite-btn", post_image: @post_image %>
                 </div>
                 <!-- 投稿者=ログインしているユーザーだったら-->
                 <% if @post_image.user == current_user %>
-                  <%= link_to "編集",edit_post_image_path(@post_image), class: "btn btn-success m-4 btn-sm" %>
-                  <%= link_to "削除",post_image_path(@post_image), method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-danger btn-sm" %>
+                  <%= link_to "編集",edit_post_image_path(@post_image), class: "btn btn-success btn-sm" %>
+                  <%= link_to "削除",post_image_path(@post_image), method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-danger m-4 btn-sm" %>
                 <% end %>
               </div>
             </div>
@@ -58,11 +60,11 @@
                 </div>
                 <!--コメント欄-->
                 <%= form_with model:[@post_image,@comment] do |f| %>
-                  <%= f.text_area :comment, size:"20x3", placeholder: "コメント欄" %>
-                  <p class="text-center ml-2"><%= f.submit "送信", class: "btn btn-success" %></p>
+                  <%= f.text_area :comment, size:"18x3", placeholder: "コメント欄" %>
+                  <p class="text-center"><%= f.submit "送信", class: "btn btn-success btn-sm" %></p>
                 <% end %>
               </div>
-              <!--コメント表示テンプレート-->
+              <!--コメント表示-->
               <div class="col-6 offset-md-1">
                 <div class="comments">
                   <%= render "comments/comment", post_image: @post_image %>

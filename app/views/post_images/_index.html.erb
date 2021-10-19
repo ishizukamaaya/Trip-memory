@@ -24,10 +24,11 @@
             <p class="card-text"><%=safe_join(post_image.introduction.split("\n"),tag(:br))%></p>
             <!--投稿日-->
             <p class="card-create"></p><%= post_image.created_at.strftime('%Y/%m/%d') %></p>
-            <!--いいねテンプレート-->
+            <!--いいねボタン-->
             <div class="favorite_buttons_<%= post_image.id %>">
               <%= render "favorites/favorite-btn", post_image: post_image %>
             </div>
+            <!--コメント数-->
             <p><%= link_to "コメント#{post_image.comments.count} 件", post_image_path(post_image), class: "text-dark" %></p>
           </div>
         </div>

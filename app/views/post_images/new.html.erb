@@ -1,6 +1,6 @@
 <div class="container" style="margin-bottom:200px;">
   <div class="row">
-    <div class="mx-auto col-sm-9">
+    <div class="mx-auto col-sm-9 mt-4">
       <h2 class="text-main  text-center">新規投稿フォーム</h2>
       <%= render 'layouts/error', obj: @post_image %>
 
@@ -23,35 +23,37 @@
               <p>タグ</p>
             </div><br>
           </div>
-            <div class = "col-sm-7 offset-md-1 mt-3">
-              <div class = "field">
-                <p><%= f.attachment_field :image,class:"form-control-static" %></p>
-              </div><br>
-              <div class = "field">
-                <p><%= f.text_field :title, placeholder: 'タイトル(10字以内)', class:"form-control col-8" %></p>
-              </div><br>
-              <div class = "field">
-                <p><%= f.text_area :introduction, size: "35x4", placeholder: '説明文(20文字以内)', class:"form-control col-8" %></p>
-              </div><br>
-              <div id="evaluate_stars"></div><br><br>
-              <div class = "field">
-                <p><%= f.text_field :name,value: @tag_list, placeholder:'海外,旅行,南国(,で区切る)',class:"form-control col-8" %></p>
-              </div><br>
-              <div class="actions">
-                <%= f.submit "投稿", class: "btn btn-success w-25 ml-5" %>
-              </div>
+
+          <div class = "col-sm-7 offset-md-1 mt-3">
+            <div class="field">
+              <p><%= f.attachment_field :image,class:"form-control-static" %></p>
+            </div><br>
+            <div class="field">
+              <p><%= f.text_field :title, placeholder: 'タイトル(10字以内)', class:"form-control col-8" %></p>
+            </div><br>
+            <div class="field">
+              <p><%= f.text_area :introduction, size: "35x4", placeholder: '説明文(20文字以内)', class:"form-control col-8" %></p>
+            </div><br>
+            <div id="evaluate_stars"></div><br>
+            <div class = "field">
+            　<p><%= f.text_field :name,value: @tag_list, placeholder:'海外,旅行,南国(,で区切る)',class:"form-control col-8" %></p>
+            </div><br>
+            <div class="actions">
+              <%= f.submit "投稿", class: "btn btn-success w-25 ml-5" %>
+            </div>
+          </div>
         </div>
       <% end %>
-      <!--評価-->
-      <script>
-        $('#evaluate_stars').raty({
-          starOn: "<%= asset_path('star-on.png') %>",
-          starOff: "<%= asset_path('star-off.png') %>",
-          starHalf: "<%= asset_path('star-half.png') %>",
-          scoreName: 'post_image[evaluation]',
-          half: true,
-        });
-      </script>
     </div>
   </div>
 </div>
+<!--評価-->
+<script>
+  $('#evaluate_stars').raty({
+    starOn: "<%= asset_path('star-on.png') %>",
+    starOff: "<%= asset_path('star-off.png') %>",
+    starHalf: "<%= asset_path('star-half.png') %>",
+    scoreName: 'post_image[evaluation]',
+    half: true,
+  });
+</script>
