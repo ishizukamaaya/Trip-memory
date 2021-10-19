@@ -9,7 +9,7 @@
         <%="(#{list.post_images.count})" %></p>
       <% end %>
     </div>
-    
+
     <div class="mx-auto col-sm-10 mt-4">
       <h2 class="text-main  text-center">投稿詳細</h2>
         <!--cardひとかたまり-->
@@ -46,8 +46,8 @@
                 </div>
                 <!-- 投稿者=ログインしているユーザーだったら-->
                 <% if @post_image.user == current_user %>
-                  <%= link_to "編集",edit_post_image_path(@post_image), class: "btn btn-success btn-sm" %>
-                  <%= link_to "削除",post_image_path(@post_image), method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-danger m-4 btn-sm" %>
+                  <%= link_to "編集",edit_post_image_path(@post_image), class: "btn btn-outline-success btn-sm" %>
+                  <%= link_to "削除",post_image_path(@post_image), method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-outline-danger m-4 btn-sm" %>
                 <% end %>
               </div>
             </div>
@@ -61,11 +61,11 @@
                 <!--コメント欄-->
                 <%= form_with model:[@post_image,@comment] do |f| %>
                   <%= f.text_area :comment, size:"18x3", placeholder: "コメント欄" %>
-                  <p class="text-center"><%= f.submit "送信", class: "btn btn-success btn-sm" %></p>
+                  <p class="text-center"><%= f.submit "送信", class: "btn btn-outline-info btn-sm" %></p>
                 <% end %>
               </div>
               <!--コメント表示-->
-              <div class="col-6 offset-md-1">
+              <div class="col-6 ml-4">
                 <div class="comments">
                   <%= render "comments/comment", post_image: @post_image %>
                 </div>

@@ -74,7 +74,7 @@ class PostImagesController < ApplicationController
   #ヘッダー検索バー
   def search
     @post_images = PostImage.all.search(params[:keyword])
-    @tag_list = Tag.all
+    @tag_list = Tag.joins(:post_image_tags).distinct
   end
 
 
