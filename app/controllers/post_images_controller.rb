@@ -64,12 +64,14 @@ class PostImagesController < ApplicationController
     redirect_to post_images_path
   end
 
+  #タグ一覧
   def search_tag
-    @tag_list = Tag.all
+    @tag_list = Tag.joins(:post_image_tags).distinct
     @tag = Tag.find(params[:tag_id])
-    @post_images = @tag.post_images.page(params[:page]).reverse_order
+    @post_images = @tag.post_images.page(params[:page]).per(6).order(created_at: :desc) #新着順
   end
 
+  #ヘッダー検索バー
   def search
     @post_images = PostImage.all.search(params[:keyword])
     @tag_list = Tag.all
