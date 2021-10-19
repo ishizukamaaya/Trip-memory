@@ -11,7 +11,7 @@
 
     <div class="mx-auto col-sm-10 mt-4">
      <!--タグで検索された一覧-->
-  　 <h2 class="text-tag-index text-center">タグが"<%=@tag.name%>"の投稿一覧</h2>
+  　 <h2 class="text-tag-index text-center">タグが"<%= @tag.name %>"の投稿一覧</h2>
       <%= render 'index', post_images: @post_images %>
       <%= paginate @post_images %>
     </div>

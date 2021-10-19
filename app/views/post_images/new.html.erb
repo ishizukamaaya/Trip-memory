@@ -1,4 +1,4 @@
-<div class="container" style="margin-bottom:200px;">
+<div class="container" style="margin-bottom:100px;">
   <div class="row">
     <div class="mx-auto col-sm-9 mt-4">
       <h2 class="text-main  text-center">新規投稿フォーム</h2>
@@ -29,10 +29,10 @@
               <p><%= f.attachment_field :image,class:"form-control-static" %></p>
             </div><br>
             <div class="field">
-              <p><%= f.text_field :title, placeholder: 'タイトル(10字以内)', class:"form-control col-8" %></p>
+              <p><%= f.text_field :title, placeholder: 'タイトル(10文字以内)', class:"form-control col-8" %></p>
             </div><br>
             <div class="field">
-              <p><%= f.text_area :introduction, size: "35x4", placeholder: '説明文(20文字以内)', class:"form-control col-8" %></p>
+              <p><%= f.text_area :introduction, size: "35x4", placeholder: '説明文(40文字以内)', class:"form-control col-8" %></p>
             </div><br>
             <div id="evaluate_stars"></div><br>
             <div class = "field">

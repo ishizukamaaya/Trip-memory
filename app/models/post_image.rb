@@ -10,7 +10,7 @@ class PostImage < ApplicationRecord
   #バリデーション
   validates :image, presence: true
   validates :title, presence: true, length: { maximum: 10 }
-  validates :introduction, presence: true, length: { maximum: 50 }
+  validates :introduction, presence: true, length: { maximum: 40 }
   validates :evaluation, presence: true
 
   #検索機能ヘッダー
