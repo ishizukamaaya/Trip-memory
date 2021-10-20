@@ -15,6 +15,11 @@
     <%= render "layouts/header" %>
 
     <%= yield %>
+    <span id="back">
+      <a href="">
+        <%= image_tag asset_path('img/btn.jpg'), data: {"turbolinks"=>false}, class: "top" %>
+      </a>
+    </span>
     <div class="fixed-bottom">
       <%= render "layouts/footer" %>
     </div>

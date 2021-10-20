@@ -30,7 +30,7 @@
  }
  /*ここまで*/
 
- /*topのボタンの位置*/
+ /*top画面のボタンの位置*/
  .inner {
    display: flex;
    justify-content: space-evenly;
@@ -113,28 +113,7 @@
   font-family:  'Vollkorn', serif;
  }
 
-
-//  /*ページネーション自体のデザイン*/
-// .pagination>li>a {
-//   border: none;   /*枠線をなくす*/
-//   color: #696969; /*文字の色を変える*/
-// }
-// .pagination {
-//   justify-content: center;
-//   margin-top: 50px;
-//  }
-
-// /* 表示しているページ番号のデザイン */
-// .pagination>.active>a {
-//   background: #93c9ff; /*背景の色を変える*/
-//   border-radius: 15px; /*角を丸くする*/
-// }
-
-// /*ホバー時のデザイン*/
-// .pagination>li>a:hover {
-//   border-radius: 15px; /*角を丸くする*/
-// }
-
+ /*ページネーションここから*/
 .pagination__wrapper {
   width:100%;
   margin:auto;
@@ -187,4 +166,16 @@
   width: auto;
   padding: 0;
   background: transparent
+}
+/*ここまでページネーション*/
+
+/*topへの矢印*/
+#back {
+  position: fixed;
+  right: 30px;
+  bottom: 80px;
+}
+.top{
+  width: 50px;
+  height: 50px;
 }
