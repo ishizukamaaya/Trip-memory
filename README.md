@@ -42,6 +42,5 @@ https://docs.google.com/spreadsheets/d/1E4Quehglf9PxM1XTE-ft2X5-hJ5dmoJhsI-UJlgz
 
 ## 使用素材
 ・designevo:https://www.designevo.com/<br>
-・photoAC:https://www.photo-ac.com/<br>
-・FONT FREE:https://fontfree.me/<br>
+・いらすとや：http://www.irasutoya.com/<br>
 ・O-DAN：https://o-dan.net/ja/
