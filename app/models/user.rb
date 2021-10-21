@@ -20,7 +20,7 @@ class User < ApplicationRecord
 
   #バリデーション
   validates :name, length: { maximum: 10, minimum: 2 }, uniqueness: true
-  validates :introduction, length: { maximum: 20 }
+  validates :introduction, length: { maximum: 30 }
 
   #userをfollowする
   def follow(user_id)
