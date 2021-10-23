@@ -37,9 +37,12 @@
   </span>
 </div>
 
+
+
 <div class='row mt-3'>
   <!--userがログインuserだったら編集可能-->
   <% if user.id == current_user.id %>
+    <%= link_to "いいねした一覧", user_favorite_list_path(user) %>
     <%= link_to '設定・編集',edit_user_path(user),class: "btn btn-outline-secondary btn-block fas fa-user-cog" %>
   <% end %>
 </div>

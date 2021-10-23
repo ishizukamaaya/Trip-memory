@@ -9,6 +9,7 @@ Rails.application.routes.draw do
     resources :relationships, only: [:create, :destroy]
     get 'followings' => 'relationships#followings', as: 'followings'
     get 'followers' => 'relationships#followers', as: 'followers'
+    get 'favorite_list' => 'favorites#favorite_list', as: 'favorite_list'
   end
 
   resources :post_images do

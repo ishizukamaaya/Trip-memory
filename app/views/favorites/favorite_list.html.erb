@@ -1,0 +1,59 @@
+<div class="container" style="margin-bottom:100px;">
+  <div class="row">
+    <div class="col-sm-2">
+      <!--タグ一覧サイドバー-->
+      <h2 class="text-tag text-center">タグ一覧</h2>
+      <% @tag_list.each do |list|%>
+        <p><%= link_to list.name, search_tag_path(tag_id: list.id), class: "text-dark" %>
+        <%="(#{list.post_images.count})" %></p>
+      <% end %>
+    </div>
+
+    <div class="mx-auto col-sm-10 mt-4">
+
+      <h2 class="text-main text-center">いいねした一覧</h2>
+      <div class="card-block">
+        <% if @favorite_list.present? %>
+          <% @favorite_list.each do |post_image| %>
+            <!--投稿画像クリックで詳細画面へ-->
+            <div class="card m-2" style="width:18rem">
+              <%= link_to post_image_path(post_image) do %>
+                <%= attachment_image_tag post_image, :image, size: "350x210", class:"card-img-top"; %>
+              <% end %>
+
+              <div class="card-body">
+                <div class="row">
+                  <div class="col-2">
+                    <!--投稿者のプロフィール写真-->
+                    <p><%= attachment_image_tag post_image.user, :profile_image, format: 'jpeg', fallback: "img/no_image.jpg", size: "40x40", class:"mt-3 rounded-circle"; %></p>
+                  </div>
+                  <div class="col-9 offset-md-1">
+                    <!--タイトルクリックで詳細画面へ-->
+                    <p class="card-title">
+                      <%= link_to(post_image_path(post_image), class:"text-dark") do %>
+                        <i class="fas fa-camera"></i>：<span><%= post_image.title %></span>
+                      <% end %>
+                    </p>
+                    <!--説明-->
+                    <p class="card-text"><%=safe_join(post_image.introduction.split("\n"),tag(:br))%></p>
+                    <!--投稿日-->
+                    <p class="card-create"><%= post_image.created_at.strftime('%Y/%m/%d') %></p>
+                    <!--いいねテンプレート-->
+                    <div class="favorite_buttons_<%= post_image.id %>">
+                      <%= render "favorites/favorite-btn", post_image: post_image %>
+                    </div>
+                    <!--コメント数-->
+                    <p><%= link_to "コメント#{post_image.comments.count} 件", post_image_path(post_image), class: "text-dark" %></p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          <% end %>
+        </div>
+      <% else %>
+        <p class="text-center mt-3">いいねした投稿はありません</p>
+      <% end %>
+      <%= paginate @favorite_list %>
+    </div>
+  </div>
+</div>

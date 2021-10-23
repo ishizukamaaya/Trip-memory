@@ -33,6 +33,7 @@ class UsersController < ApplicationController
   def unsubscribe
   end
 
+
   private
 
   def user_params
