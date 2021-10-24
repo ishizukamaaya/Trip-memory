@@ -15,7 +15,7 @@ class FavoritesController < ApplicationController
   def favorite_list
     favorites = Favorite.where(user_id: current_user.id).pluck(:post_image_id) # ログイン中のユーザーのいいねのpost_image_idを取得
     @favorite_list = PostImage.find(favorites) #いいね済のレコードを取得
-    @favorite_list = Kaminari.paginate_array(@favorite_list).page(params[:page]).per(6)
+    @favorite_list = Kaminari.paginate_array(@favorite_list).page(params[:page]).per(6) #1ページに6件表示
     @tag_list = Tag.joins(:post_image_tags).distinct #結合して重複のないデータを取得(1つ以上データがあれば)
   end
 
