@@ -44,6 +44,12 @@
                 <div class="favorite_buttons_<%= @post_image.id %>">
                   <%= render "favorites/favorite-btn", post_image: @post_image %>
                 </div>
+                <div>
+                  <% @post_image.ai_tags.each do |ai_tag| %>
+                    <span class="label"><%= ai_tag.name %></span>
+                  <% end %>
+                </div>
+
                 <!-- 投稿者=ログインしているユーザーだったら-->
                 <% if @post_image.user == current_user %>
                   <%= link_to "編集",edit_post_image_path(@post_image), class: "btn btn-outline-success btn-sm" %>

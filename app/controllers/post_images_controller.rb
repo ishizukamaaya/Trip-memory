@@ -10,8 +10,13 @@ class PostImagesController < ApplicationController
     @post_image = PostImage.new(post_image_params)
     @post_image.user_id = current_user.id
     tag_list = params[:post_image][:name].split(',')
+
     if @post_image.save
       @post_image.save_tags(tag_list)
+      ai_tags = Vision.get_image_data(@post_image.image)
+      ai_tags.each do |ai_tag|
+        @post_image.ai_tags.create(name: ai_tag)
+      end
       redirect_to post_image_path(@post_image)
     else
       render :new

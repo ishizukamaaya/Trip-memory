@@ -6,6 +6,7 @@ class PostImage < ApplicationRecord
   has_many :favorites, dependent: :destroy
   has_many :post_image_tags, dependent: :destroy
   has_many :tags, through: :post_image_tags
+  has_many :ai_tags, dependent: :destroy
 
   #バリデーション
   validates :image, presence: true
