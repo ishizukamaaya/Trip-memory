@@ -20,5 +20,7 @@ Rails.application.routes.draw do
   get "search_tag" => "post_images#search_tag"
   get "search" => "post_images#search"
 
+  resources :chats, only: [:create, :show]
+
 
 end

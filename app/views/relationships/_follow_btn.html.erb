@@ -7,3 +7,7 @@
     <%= link_to 'フォローする', user_relationships_path(user.id), method: :POST, class: "btn btn-success fab fa-twitter", remote: true %>
   <% end %>
 <% end %>
+
+<% if current_user != user && current_user.following?(user) && user.following?(current_user) %>
+  <%= link_to 'Chatする', chat_path(user) %>
+<% end %>

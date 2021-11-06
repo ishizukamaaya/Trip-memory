@@ -15,6 +15,8 @@ class User < ApplicationRecord
   has_many :relationships, class_name: "Relationship", foreign_key: "follower_id", dependent: :destroy #フォローしてる人を取得
   has_many :followings, through: :relationships, source: :followed #自分がフォローしてる人
   #フォロー関連ここまで
+  has_many :user_rooms, dependent: :destroy
+  has_many :chats, dependent: :destroy
 
   attachment :profile_image
 
