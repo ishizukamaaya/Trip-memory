@@ -23,7 +23,7 @@
     </td>
   </tr>
   <tr>
-    <th>フォローワー</th>
+    <th>フォロワー</th>
     <td id='follower-count_<%= user.id %>'>
       <%=link_to user.followers.count, user_followers_path(user) %>
     </td>
@@ -36,7 +36,7 @@
     <%= render "relationships/follow_btn", user: user %>
   </span>
 
-  
+
 </div>
 
 <div class='row mt-3'>
